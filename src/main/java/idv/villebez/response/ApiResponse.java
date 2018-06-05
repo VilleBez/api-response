@@ -1,10 +1,10 @@
-package org.response;
-
-import org.exception.ValidateException;
-import org.util.JacksonUtils;
+package idv.villebez.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+import idv.villebez.exception.ValidateException;
+import idv.villebez.util.JacksonUtils;
 
 /**
  * 標準的API回應結果

@@ -1,4 +1,4 @@
-package org.response;
+package idv.villebez.response;
 
 public class Warning {
 	private String code;

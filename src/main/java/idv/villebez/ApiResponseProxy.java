@@ -1,4 +1,4 @@
-package org;
+package idv.villebez;
 
 
 import java.lang.reflect.InvocationHandler;
@@ -6,12 +6,13 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
-import org.exception.ValidateException;
-import org.response.ApiResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.FactoryBean;
-import org.util.JacksonUtils;
+
+import idv.villebez.exception.ValidateException;
+import idv.villebez.response.ApiResponse;
+import idv.villebez.util.JacksonUtils;
 
 /**
  * @author paul.chen

@@ -1,4 +1,4 @@
-package org.exception;
+package idv.villebez.exception;
 
 public class ValidateRequiredException extends ValidateParameterException {
 

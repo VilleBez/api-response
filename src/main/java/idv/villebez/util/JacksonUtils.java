@@ -1,4 +1,4 @@
-package org.util;
+package idv.villebez.util;
 
 import java.io.IOException;
 import java.io.StringWriter;

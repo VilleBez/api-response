@@ -1,6 +1,6 @@
-package org.exception;
+package idv.villebez.exception;
 
-import org.response.Warning;
+import idv.villebez.response.Warning;
 
 public abstract class ValidateException extends Exception {
 
