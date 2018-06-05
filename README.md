@@ -2,6 +2,9 @@
 
 - Response
 - Exception
+- Paging
+	* CursorPagingModel 游標型分頁，搭配 CursorUtils 對游標加解密編碼
+	* OffsetPagingModel 位移型分頁
 
 ## Benefit
 
@@ -41,4 +44,3 @@
 	{"error":{"exception":"java.lang.ArrayIndexOutOfBoundsException","message":"1"}}
 	{"warning":{"code":"101","desc":"can not be null!!"}}
 
-## Future
