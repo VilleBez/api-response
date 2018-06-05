@@ -6,8 +6,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.FactoryBean;
 
 import idv.villebez.exception.ValidateException;
@@ -20,7 +19,7 @@ import idv.villebez.util.JacksonUtils;
  * @param <T>
  */
 public class ApiResponseProxy<T> implements InvocationHandler, FactoryBean<T> {
-	private Logger log = LoggerFactory.getLogger(ApiResponseProxy.class);
+	private Logger log = Logger.getLogger(this.getClass());
     
     private Object obj;
     public Object bind(Object obj) { 
