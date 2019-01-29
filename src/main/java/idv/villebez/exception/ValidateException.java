@@ -2,7 +2,7 @@ package idv.villebez.exception;
 
 import idv.villebez.response.Warning;
 
-public abstract class ValidateException extends Exception {
+public abstract class ValidateException extends RuntimeException {
 
 	private static final long serialVersionUID = 27465869316380653L;
 
