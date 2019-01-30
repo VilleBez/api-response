@@ -20,11 +20,12 @@ public class ValidateLogicException extends ValidateException {
 	 *  <li>DUPLICATE</li>
 	 *  <li>NODATA</li>
 	 *  <li>UPTOLIMIT</li>
+	 *  <li>NO_PERMISSION</li>
 	 *  <li>DEFAULT</li>
 	 *  </ul>
 	 */
 	public enum LogicType {
-		DUPLICATE("10"), NODATA("11"), UPTOLIMIT("12"), DEFAULT("");
+		DUPLICATE("10"), NODATA("11"), UPTOLIMIT("12"), NO_PERMISSION("13"), DEFAULT("");
 
 		private String value;
 
