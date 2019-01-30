@@ -2,9 +2,10 @@ package idv.villebez.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import idv.villebez.exception.ValidateException;
-import idv.villebez.util.JacksonUtils;
 
 /**
  * 標準的API回應結果
@@ -15,6 +16,8 @@ import idv.villebez.util.JacksonUtils;
 @JsonInclude(Include.NON_NULL)
 public class ApiResponse {
 
+	private ObjectMapper mapper = new ObjectMapper();
+
 	/** API回傳結果 */
 	private Object response;
 	/** API錯誤情形 */
@@ -22,30 +25,49 @@ public class ApiResponse {
 	/** API錯誤情形 */
 	private Warning warning;
 
-	public static final String RESPONSE_KEY = "response";
-
 	/**
-	 * 標準輸出格式
+	 * <p>
+	 * Contains the successs result when the response was successful.
+	 * </p>
 	 * 
 	 * @param result
-	 * @return
+	 *            The response data.
+	 * 
+	 * @return String
 	 */
 	public static String success(Object result) {
-		if (result instanceof String) {
-			return "{\"" + RESPONSE_KEY + "\":" + result + "}";
-		} else {
-			ApiResponse resp = new ApiResponse();
-			resp.setResponse(result);
-			return resp.toString();
-		}
+		ApiResponse resp = new ApiResponse();
+		resp.setResponse(result);
+		return resp.toString();
 	}
 
+	/**
+	 * <p>
+	 * Contains the fail result when the response was fail.
+	 * </p>
+	 * 
+	 * @param e
+	 *            Contain the Exception message
+	 * 
+	 * @return String
+	 */
 	public static String fail(Exception e) {
 		ApiResponse resp = new ApiResponse();
 		resp.setError(new Error(e.getClass().getName(), e.getMessage()));
 		return resp.toString();
 	}
 
+	/**
+	 * <p>
+	 * Contains the validateException result when the response was threw the
+	 * related exception.
+	 * </p>
+	 * 
+	 * @param e
+	 *            Contain the ValidateException message
+	 * 
+	 * @return String
+	 */
 	public static String warn(ValidateException e) {
 		ApiResponse resp = new ApiResponse();
 		resp.setWarning(e.getWarning());
@@ -54,7 +76,12 @@ public class ApiResponse {
 
 	@Override
 	public String toString() {
-		return JacksonUtils.writeBeanToJson(this);
+		try {
+			return mapper.writeValueAsString(this);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public Object getResponse() {
